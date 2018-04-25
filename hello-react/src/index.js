@@ -99,39 +99,144 @@ import './index.css'
 //     }
 // }
 
-const lessons = [
-    { title: 'Lesson 1: title', description: 'Lesson 1: description' },
-    { title: 'Lesson 2: title', description: 'Lesson 2: description' },
-    { title: 'Lesson 3: title', description: 'Lesson 3: description' },
-    { title: 'Lesson 4: title', description: 'Lesson 4: description' }
-]
-class Lesson extends Component {
-    handlerClick() {
-        console.log(this.props.i + '-' + this.props.lesson.title)
-    }
-    render() {
-        const { lesson } = this.props
-        return (
-            <div onClick={this.handlerClick.bind(this)}>
-                <h1>{lesson.title}</h1>
-                <p>{lesson.description}</p>
-            </div>
-        )
-    }
-}
+// const lessons = [
+//     { title: 'Lesson 1: title', description: 'Lesson 1: description' },
+//     { title: 'Lesson 2: title', description: 'Lesson 2: description' },
+//     { title: 'Lesson 3: title', description: 'Lesson 3: description' },
+//     { title: 'Lesson 4: title', description: 'Lesson 4: description' }
+// ]
+// class Lesson extends Component {
+//     handlerClick() {
+//         console.log(this.props.i + '-' + this.props.lesson.title)
+//     }
+//     render() {
+//         const { lesson } = this.props
+//         return (
+//             <div onClick={this.handlerClick.bind(this)}>
+//                 <h1>{lesson.title}</h1>
+//                 <p>{lesson.description}</p>
+//             </div>
+//         )
+//     }
+// }
 
-class LessonsList extends Component {
+// class LessonsList extends Component {
+//     render() {
+//         return (
+//             <div>
+//                 {lessons.map((item, index) => { return <Lesson lesson={item} i={index} key={index} /> })}
+//             </div>
+//         )
+//     }
+// }
+
+// class Input extends Component {
+//     constructor() {
+//         super()
+//         this.state = {
+//             number: ""
+//         }
+//     }
+//     handlerNumberChange(e) {
+//         this.setState({
+//             number: e.target.value
+//         })
+//         this.props.onSubmit(e.target.value)
+//     }
+//     render() {
+//         return (
+//             <div>
+//                 <input type='number' value={this.state.number}
+//                     onChange={this.handlerNumberChange.bind(this)} />
+//             </div>
+//         )
+//     }
+// }
+
+// class PercentageShower extends Component {
+//     render() {
+//         return (
+//             <div>{this.props.number}%</div>
+//         )
+//     }
+// }
+
+// class PercentageApp extends Component {
+//     constructor() {
+//         super()
+//         this.state = {
+//             number: ''
+//         }
+//     }
+
+//     handerSubmit(number) {
+//         let n = (number * 100).toFixed(2)
+//         this.setState({
+//             number: n
+//         })
+//     }
+//     render() {
+//         return (
+//             <div>
+//                 <Input onSubmit={this.handerSubmit.bind(this)} />
+//                 <PercentageShower number={this.state.number} />
+//             </div>
+//         )
+//     }
+// }
+class Clock extends Component {
+    constructor() {
+        super()
+        this.state = {
+            date: new Date()
+        }
+    }
+
+    componentWillMount() {
+        this.timer = setInterval(() => {
+            this.setState({ date: new Date() })
+        }, 1000)
+    }
     render() {
         return (
             <div>
-                {lessons.map((item, index) => { return <Lesson lesson={item} i={index} key={index} /> })}
+                <h1>
+                    <p>现在的时间是</p>
+                    {this.state.date.toLocaleTimeString()}
+                </h1>
             </div>
+        )
+    }
+    componentWillUnmount() {
+        clearInterval(this.timer)
+    }
+}
 
+
+class Index extends Component {
+    constructor() {
+        super()
+        this.state = {
+            isShowClock: true
+        }
+    }
+
+    handlerTrggleClick() {
+        this.setState({
+            isShowClock: !this.state.isShowClock
+        })
+    }
+    render() {
+        return (
+            <div>
+                {this.state.isShowClock ? <Clock /> : null}
+                <button onClick={this.handlerTrggleClick.bind(this)}>切换</button>
+            </div>
         )
     }
 }
 
 ReactDOM.render(
-    <LessonsList />,
+    <Index />,
     document.getElementById('root')
 )
