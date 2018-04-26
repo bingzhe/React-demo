@@ -281,6 +281,14 @@ import './index.css'
 //     }
 // }
 
+class CommentList extends React.component {
+
+}
+
+const CommentListWithSubscription = withSubscription(
+    CommentList, (DataSource) => DataSource.getComments()
+)
+
 class Post extends Component {
     static defaultProps = {
         content: 'aaa'
