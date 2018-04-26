@@ -13,7 +13,7 @@ class CommentApp extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            comments: []
+            comments: props.data || []
         }
     }
 
