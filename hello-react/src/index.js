@@ -184,59 +184,124 @@ import './index.css'
 //         )
 //     }
 // }
-class Clock extends Component {
-    constructor() {
-        super()
-        this.state = {
-            date: new Date()
-        }
-    }
+// class Clock extends Component {
+//     constructor() {
+//         super()
+//         this.state = {
+//             date: new Date()
+//         }
+//     }
 
-    componentWillMount() {
-        this.timer = setInterval(() => {
-            this.setState({ date: new Date() })
-        }, 1000)
+//     componentWillMount() {
+//         this.timer = setInterval(() => {
+//             this.setState({ date: new Date() })
+//         }, 1000)
+//     }
+//     render() {
+//         return (
+//             <div>
+//                 <h1>
+//                     <p>现在的时间是</p>
+//                     {this.state.date.toLocaleTimeString()}
+//                 </h1>
+//             </div>
+//         )
+//     }
+//     componentWillUnmount() {
+//         clearInterval(this.timer)
+//     }
+// }
+
+
+// class Index extends Component {
+//     constructor() {
+//         super()
+//         this.state = {
+//             isShowClock: true
+//         }
+//     }
+
+//     handlerTrggleClick() {
+//         this.setState({
+//             isShowClock: !this.state.isShowClock
+//         })
+//     }
+//     render() {
+//         return (
+//             <div>
+//                 {this.state.isShowClock ? <Clock /> : null}
+//                 <button onClick={this.handlerTrggleClick.bind(this)}>切换</button>
+//             </div>
+//         )
+//     }
+// }
+
+// class Post extends Component {
+//     constructor() {
+//         super()
+//         this.state = {
+//             content: ""
+//         }
+//     }
+//     getContent() {
+//         getPostData().then((postContent) => {
+//             this.setState({
+//                 content = postContent
+//             })
+//         })
+//     }
+//     componentWillMount() {
+//         this.setState({
+//             content: '数据加载中...'
+//         })
+//         this.getCOntent()
+//     }
+//     reload() {
+//         this.getCOntent()
+//     }
+//     render() {
+//         return (
+//             <div>
+//                 <div className='post-content'>{this.state.content}</div>
+//                 <button onClick={this.reload.this(bind)}>刷新</button>
+//             </div>
+//         )
+//     }
+// }
+
+// const getDefaultStyledPost = (defaultStyle) => {
+//     /* TODO */
+//     class Post extends Component {
+//         render() {
+//             const style={...defaultStyle,...this.props.style}
+//             return(
+//                 <p style={style}></p>
+//             )
+//         }
+//     }
+// }
+
+class Post extends Component {
+    static defaultProps = {
+        content: 'aaa'
+    }
+    getEleHieght() {
+        console.log(this.paContent.clientHeight)
     }
     render() {
         return (
-            <div>
-                <h1>
-                    <p>现在的时间是</p>
-                    {this.state.date.toLocaleTimeString()}
-                </h1>
-            </div>
-        )
-    }
-    componentWillUnmount() {
-        clearInterval(this.timer)
-    }
-}
-
-
-class Index extends Component {
-    constructor() {
-        super()
-        this.state = {
-            isShowClock: true
-        }
-    }
-
-    handlerTrggleClick() {
-        this.setState({
-            isShowClock: !this.state.isShowClock
-        })
-    }
-    render() {
-        return (
-            <div>
-                {this.state.isShowClock ? <Clock /> : null}
-                <button onClick={this.handlerTrggleClick.bind(this)}>切换</button>
-            </div>
+            <p
+                ref={(p) => this.paContent = p}
+                onClick={this.getEleHieght.bind(this)}
+            >
+                {this.props.content}
+            </p>
         )
     }
 }
+
 
 ReactDOM.render(
-    <Index />,
+    <Post />,
     document.getElementById('root')
 )
