@@ -1,12 +1,7 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-/hello-react/node_modules/
-/comment-app/node_modules/
-/comment-app-hoc/mode_modules/
-/make-redux/mode_modules/
-/react-redux/mode_modules/
-/comment-app2/mode_modules/
+/node_modules
 
 # testing
 /coverage
