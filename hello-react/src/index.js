@@ -281,35 +281,42 @@ import './index.css'
 //     }
 // }
 
-class CommentList extends React.component {
+// class CommentList extends React.component {
 
-}
+// }
 
-const CommentListWithSubscription = withSubscription(
-    CommentList, (DataSource) => DataSource.getComments()
-)
+// const CommentListWithSubscription = withSubscription(
+//     CommentList, (DataSource) => DataSource.getComments()
+// )
 
-class Post extends Component {
-    static defaultProps = {
-        content: 'aaa'
-    }
-    getEleHieght() {
-        console.log(this.paContent.clientHeight)
-    }
+// class Post extends Component {
+//     static defaultProps = {
+//         content: 'aaa'
+//     }
+//     getEleHieght() {
+//         console.log(this.paContent.clientHeight)
+//     }
+//     render() {
+//         return (
+//             <p
+//                 ref={(p) => this.paContent = p}
+//                 onClick={this.getEleHieght.bind(this)}
+//             >
+//                 {this.props.content}
+//             </p>
+//         )
+//     }
+// }
+
+class Index extends Component {
     render() {
         return (
-            <p
-                ref={(p) => this.paContent = p}
-                onClick={this.getEleHieght.bind(this)}
-            >
-                {this.props.content}
-            </p>
+            <div>1</div>
         )
     }
 }
 
-
 ReactDOM.render(
-    <Post />,
+    <Index />,
     document.getElementById('root')
 )
